@@ -1,0 +1,51 @@
+def variableSignature(input){
+var replaceMapDataStructureWithVariable(input);
+var variableSignature= formatVariableSignature(input);
+variableSignature;}
+
+def replaceMapDataStructureWithVariable(input){
+input.replaceAll("([a-zA-Z])+(\\s)*(<)(\\s)*(.)+(>)", "variable");}
+
+def formatVariableSignature(input){
+var variableSignature;
+if(input.contains("=")){variableSignature=  convertVariableWithValueAssigned(input);
+}
+else{variableSignature= convertVariableWithNoValueAssigned(input);
+}
+variableSignature;}
+
+def convertVariableWithNoValueAssigned(input){
+var variable= new Variable();
+var inputStringInParts= input.split("(\\s)+");
+var variableName= inputStringInParts[inputStringInParts.length-1];
+variable.name= outputWithSemicolon(variableName);
+variable.value= "";
+variable.name + variable.value;}
+
+
+def convertVariableWithValueAssigned(input){
+var variable= new Variable();
+var inputStringInParts= input.split("=");
+variable.name= varNameWithEqualSign(inputStringInParts[0]);
+variable.value= inputStringInParts[1];
+
+var outPut= variable.name + variable.value;
+outPut;}
+
+def varNameWithEqualSign(variableNameDef){
+var varNameDefArray= variableNameDef.split("(\\s)+");
+var variableName= varNameDefArray[varNameDefArray.length-1];
+var output;
+if (varNameDefArray.length == 1){output= variableName + "=";
+}
+else {output=  "var " + variableName + "=";
+}
+output;}
+
+def outputWithSemicolon(variableName){
+var output;
+if (variableName.contains(";")) {output=  "var " + variableName + "";
+}
+else {output= "var "+ variableName + ";";
+}
+output;}
